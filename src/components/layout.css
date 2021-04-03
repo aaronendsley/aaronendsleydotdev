@@ -7,8 +7,6 @@ html {
   scrollbar-width: thin;
   scrollbar-color: #25b3b8 #252b33;
   background: linear-gradient(#000000 -1%, #3b3b3b 90%);
-  /* background-position: fixed;
-  background-size: cover; */
   background-attachment: fixed;
 }
 
