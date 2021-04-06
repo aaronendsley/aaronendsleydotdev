@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 
 const Container = styled.div`
   width: 80%;
-  margin: 150px auto;
+  margin: 150px auto 120px auto;
   color: #fff;
   /* border: solid 3px #25b3b8; */
 
