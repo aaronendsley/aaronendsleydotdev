@@ -29,8 +29,6 @@ const Layout = ({ children }) => {
   const GithubIcon = data.file.childImageSharp.fluid.base64;
   const GithubLink = data.site.siteMetadata.githubLink;
 
-  console.log(GithubLink);
-
   return (
     <>
       <TopBar

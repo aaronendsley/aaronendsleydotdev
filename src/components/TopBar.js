@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 
 const Bar = styled.div`
   background-color: #000;
@@ -20,6 +21,21 @@ const PageTitle = styled.h1`
   color: #25b3b8;
   padding-left: 20px;
   padding-top: 5px;
+
+  a {
+    color: #25b3b8;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #25b3b8;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: #25b3b8;
+    text-decoration: none;
+  }
 `;
 
 const GitHubIconFlexContainer = styled.div`
@@ -41,7 +57,9 @@ const GithubIcon = styled.img`
 export default function TopBar({ pageName, githubLink, githubIcon }) {
   return (
     <Bar>
-      <PageTitle>{pageName}</PageTitle>
+      <PageTitle>
+        <Link to="/">{pageName}</Link>
+      </PageTitle>
       <GitHubIconFlexContainer>
         <IconContainer>
           <a href={githubLink}>
