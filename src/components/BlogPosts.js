@@ -19,7 +19,6 @@ const BlogPostsContainer = styled.div`
   width: 75%;
   border-bottom: solid 5px #25b3b8;
   margin: 0 auto 50px auto;
-  display: block;
 `;
 
 /// Blog Post component

@@ -38,6 +38,7 @@ const data = [
 const PortfolioContainer = styled.div`
   width: 90%;
   margin: 100px auto;
+  display: block;
 `;
 
 const PortfolioHeader = styled.h1`
@@ -53,11 +54,15 @@ const PortfolioHeader = styled.h1`
 // portfolio item styles
 
 const PortfolioItemContainer = styled.div`
-  width: 500px;
+  width: 80%;
   margin: 20px auto;
   background: rgba(13, 12, 12, 0.47);
   border-top: solid 3px #25b3b8;
   display: table;
+
+  @media (min-width: 1000px) {
+    width: 495px;
+  }
 `;
 
 const PortfolioItemHeader = styled.h2`
@@ -98,6 +103,17 @@ const PortfolioItemButton = styled.button`
   display: block;
 `;
 
+const ContentContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+
+  @media (min-width: 1000px) {
+    width: 90%;
+  }
+`;
+
 function PortfolioItem({ portfolioItem }) {
   return (
     <>
@@ -117,9 +133,11 @@ export default function portfolio() {
   return (
     <PortfolioContainer>
       <PortfolioHeader>My Portfolio</PortfolioHeader>
-      {data.map(item => (
-        <PortfolioItem portfolioItem={item} key={item.itemSlug} />
-      ))}
+      <ContentContainer>
+        {data.map(item => (
+          <PortfolioItem portfolioItem={item} key={item.itemSlug} />
+        ))}
+      </ContentContainer>
     </PortfolioContainer>
   );
 }
