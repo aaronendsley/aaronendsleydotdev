@@ -1,38 +1,6 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
-
-const data = [
-  {
-    itemTitle: 'LOL This is a mega super title ',
-    itemDescription:
-      'LOL super cool portfolio item this item is so cool that you cant deny its awesomeness',
-    itemSlug: '39898dsjfjlskjsd',
-  },
-  {
-    itemTitle: 'LOL This is a mega super title ',
-    itemDescription:
-      'LOL super cool portfolio item this item is so cool that you cant deny its awesomeness',
-    itemSlug: 'fkjajkfaslskdkfak',
-  },
-  {
-    itemTitle: 'LOL This is a mega super title ',
-    itemDescription:
-      'LOL super cool portfolio item this item is so cool that you cant deny its awesomeness',
-    itemSlug: 'ffhhsiissnsyhyenu',
-  },
-  {
-    itemTitle: 'LOL This is a mega super title ',
-    itemDescription:
-      'LOL super cool portfolio item this item is so cool that you cant deny its awesomeness',
-    itemSlug: 'kkdkdkkwuuushhbbbdd',
-  },
-  {
-    itemTitle: 'LOL This is a mega super title ',
-    itemDescription:
-      'LOL super cool portfolio item this item is so cool that you cant deny its awesomeness',
-    itemSlug: 'llllsskkks888w376767ssusdsdhhj',
-  },
-];
+import { useStaticQuery, graphql, Link } from 'gatsby';
 
 // portfolio page styles
 const PortfolioContainer = styled.div`
@@ -101,6 +69,21 @@ const PortfolioItemButton = styled.button`
   border: none;
   margin: 0 auto 50px auto;
   display: block;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a:visited {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 const ContentContainer = styled.div`
@@ -123,19 +106,36 @@ function PortfolioItem({ portfolioItem }) {
         <PortfolioItemDescription>
           {portfolioItem.itemDescription}
         </PortfolioItemDescription>
-        <PortfolioItemButton>View Item</PortfolioItemButton>
+        <PortfolioItemButton>
+          <Link to={`/portfolio/${portfolioItem.itemSlug.current}`}>
+            View Item
+          </Link>
+        </PortfolioItemButton>
       </PortfolioItemContainer>
     </>
   );
 }
 
-export default function portfolio() {
+export default function Portfolio() {
+  const getPortfolioItems = useStaticQuery(graphql`
+    {
+      allSanityPortfolio {
+        nodes {
+          itemDescription
+          itemSlug {
+            current
+          }
+          itemTitle
+        }
+      }
+    }
+  `);
   return (
     <PortfolioContainer>
       <PortfolioHeader>My Portfolio</PortfolioHeader>
       <ContentContainer>
-        {data.map(item => (
-          <PortfolioItem portfolioItem={item} key={item.itemSlug} />
+        {getPortfolioItems.allSanityPortfolio.nodes.map(item => (
+          <PortfolioItem portfolioItem={item} key={item.itemSlug.current} />
         ))}
       </ContentContainer>
     </PortfolioContainer>

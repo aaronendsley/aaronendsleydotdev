@@ -1,3 +1,6 @@
+const dotenv = require('dotenv');
+
+dotenv.config({ path: '.env' });
 module.exports = {
   siteMetadata: {
     title: `AaronEndsley.Dev`,
@@ -12,6 +15,15 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-sanity',
+      options: {
+        projectId: process.env.SANITY_ID,
+        dataset: 'production',
+        watchMode: true,
+        token: process.env.SANITY_TOKEN,
       },
     },
     `gatsby-transformer-sharp`,

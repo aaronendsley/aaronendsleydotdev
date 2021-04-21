@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -72,6 +73,21 @@ const PostButton = styled.button`
   border: none;
   margin: 0 auto 50px auto;
   display: block;
+
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: #000;
+  }
+
+  a:visted {
+    text-decoration: none;
+    color: #000;
+  }
 `;
 
 function BlogPost({ post }) {
@@ -81,7 +97,9 @@ function BlogPost({ post }) {
         <PostTitle>{post.postTitle}</PostTitle>
         <StyledHr />
         <PostDescription>{post.postDescription}</PostDescription>
-        <PostButton>Read Post</PostButton>
+        <PostButton>
+          <Link to={`/blog/${post.postSlug.current}`}>Read Post </Link>
+        </PostButton>
       </BlogPostContainer>
     </>
   );
@@ -93,10 +111,8 @@ export default function BlogPosts({ BlogPosts }) {
       <BlogPostsHeader> Blog Posts </BlogPostsHeader>
       <BlogPostsContainer>
         {BlogPosts.map(post => (
-          <BlogPost post={post} key={post.postSlug} />
+          <BlogPost post={post} key={post.postSlug.current} />
         ))}
-        <br />
-        <br />
         <br />
         <br />
       </BlogPostsContainer>

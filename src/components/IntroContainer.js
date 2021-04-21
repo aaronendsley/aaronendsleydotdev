@@ -112,8 +112,9 @@ export default function IntroContainer() {
   const data = useStaticQuery(graphql`
     query profilePic {
       file(relativePath: { eq: "me.jpg" }) {
+        id
         childImageSharp {
-          resolutions {
+          fluid {
             srcWebp
           }
         }
@@ -121,8 +122,8 @@ export default function IntroContainer() {
     }
   `);
 
-  const profilePic = data.file.childImageSharp.resolutions.srcWebp;
-
+  const profilePic = data.file.childImageSharp.fluid.srcWebp;
+  console.log(profilePic);
   return (
     <Container>
       <TagLine>Write Code, Drink Coffee, Repeat...</TagLine>
