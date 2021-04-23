@@ -76,17 +76,17 @@ const PostButton = styled.button`
 
   a {
     text-decoration: none;
-    color: #000;
+    color: inherit;
   }
 
   a:hover {
     text-decoration: none;
-    color: #000;
+    color: inherit;
   }
 
   a:visted {
     text-decoration: none;
-    color: #000;
+    color: inherit;
   }
 `;
 
