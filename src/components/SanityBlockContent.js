@@ -5,6 +5,40 @@ import imageUrlBuilder from '@sanity/image-url';
 import sanityClient from '@sanity/client';
 import styled from 'styled-components';
 
+const StyleContainer = styled.div`
+  width: 90%;
+  margin: 20px auto;
+  h1 {
+    color: #25b3b8;
+    font-family: 'roboto', sans-serif;
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    color: #25b3b8;
+    font-family: 'roboto', sans-serif;
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    color: #25b3b8;
+    font-family: 'roboto', sans-serif;
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    color: #25b3b8;
+    font-family: 'roboto', sans-serif;
+    font-size: 1.3rem;
+  }
+
+  p {
+    color: #fff;
+    font-family: dm, sans-serif;
+    font-size: 1.2rem;
+  }
+`;
+
 const ImageTag = styled.img`
   width: 80%;
   margin: 50px auto;
@@ -49,24 +83,11 @@ const serializer = {
   },
 };
 
-export default function BlogPosts({ data: { blog } }) {
-  console.log(blog._rawPostContent);
+export default function BlogPosts({ data }) {
+  console.log(data);
   return (
-    <div>
-      <BlockContent blocks={blog._rawPostContent} serializers={serializer} />
-    </div>
+    <StyleContainer>
+      <BlockContent blocks={data} serializers={serializer} />
+    </StyleContainer>
   );
 }
-
-export const query = graphql`
-  query($slug: String!) {
-    blog: sanityBlogPost(postSlug: { current: { eq: $slug } }) {
-      postTitle
-      postDescription
-      _rawPostContent
-      postSlug {
-        current
-      }
-    }
-  }
-`;

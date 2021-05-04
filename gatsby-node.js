@@ -8,7 +8,7 @@
 const path = require('path');
 
 async function turnBlogPostsIntoPages({ graphql, actions }) {
-  const blogTemplate = path.resolve('./src/templates/BlogPosts.js');
+  const postsTemplate = path.resolve('./src/templates/Posts.js');
   const { data } = await graphql(`
     query {
       blogs: allSanityBlogPost {
@@ -16,6 +16,8 @@ async function turnBlogPostsIntoPages({ graphql, actions }) {
           postSlug {
             current
           }
+          postTitle
+          _rawPostContent
         }
       }
     }
@@ -28,9 +30,11 @@ async function turnBlogPostsIntoPages({ graphql, actions }) {
     actions.createPage({
       // what is the url for this new page
       path: `blog/${blog.postSlug.current}`,
-      component: blogTemplate,
+      component: postsTemplate,
       context: {
         slug: blog.postSlug.current,
+        title: blog.postTitle,
+        content: blog._rawPostContent,
       },
     });
   });
