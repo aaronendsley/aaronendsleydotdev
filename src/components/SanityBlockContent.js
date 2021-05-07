@@ -1,4 +1,3 @@
-import { graphql } from 'gatsby';
 import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import imageUrlBuilder from '@sanity/image-url';

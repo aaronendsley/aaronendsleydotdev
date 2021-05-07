@@ -6,7 +6,10 @@ import { useStaticQuery, graphql, Link } from 'gatsby';
 const PortfolioContainer = styled.div`
   width: 90%;
   margin: 100px auto;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const PortfolioHeader = styled.h1`
@@ -26,10 +29,15 @@ const PortfolioItemContainer = styled.div`
   margin: 20px auto;
   background: rgba(13, 12, 12, 0.47);
   border-top: solid 3px #25b3b8;
-  display: table;
+  display: block;
 
-  @media (min-width: 1000px) {
-    width: 495px;
+  @media (min-width: 1200px) {
+    width: 500px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 500px;
+    flex: 2;
   }
 `;
 
@@ -90,10 +98,11 @@ const ContentContainer = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 
   @media (min-width: 1000px) {
     width: 90%;
+    align-self: center;
   }
 `;
 

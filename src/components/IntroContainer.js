@@ -123,7 +123,6 @@ export default function IntroContainer() {
   `);
 
   const profilePic = data.file.childImageSharp.fluid.srcWebp;
-  console.log(profilePic);
   return (
     <Container>
       <TagLine>Write Code, Drink Coffee, Repeat...</TagLine>
