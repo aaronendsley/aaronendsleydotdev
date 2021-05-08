@@ -35,6 +35,11 @@ const StyleContainer = styled.div`
     color: #fff;
     font-family: dm, sans-serif;
     font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
+
+  @media (min-width: 1000px) {
+    width: 70%;
   }
 `;
 
